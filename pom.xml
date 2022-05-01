@@ -72,6 +72,10 @@
             <artifactId>guava</artifactId>
             <version>31.0.1-jre</version>
         </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-reactive-pg-client</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

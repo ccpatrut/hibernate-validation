@@ -21,8 +21,8 @@ public class ServiceServiceImpl implements ServiceService {
     }
 
     @Override
-    public Uni<Boolean> isValid(final UUID businessId, final String name) {
+    public Uni<Boolean> isUniqueNameForBusinessId(final UUID businessId, final String name) {
         //more  business logic
-        return serviceRepository.isValid(businessId, name);
+        return serviceRepository.isUniqueNameForBusinessId(businessId, name);
     }
 }

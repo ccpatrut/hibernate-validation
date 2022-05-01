@@ -8,5 +8,5 @@ import java.util.UUID;
 public interface ServiceRepository {
     Uni<UUID> save(final ServiceTO service);
 
-    Uni<Boolean> isValid(final UUID businessId, final String name);
+    Uni<Boolean> isUniqueNameForBusinessId(final UUID businessId, final String name);
 }
