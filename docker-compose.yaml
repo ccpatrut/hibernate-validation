@@ -6,11 +6,11 @@ volumes:
 services:
   postgres:
     image: postgres:13.5-alpine3.15
-    container_name: pg-pointrq
+    container_name: pg
     volumes:
       - pointrq13:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: pointr
-      POSTGRES_PASSWORD: pointr
+      POSTGRES_USER: database
+      POSTGRES_PASSWORD: database
     ports:
-      - 5435:5432
+      - 5432:5432

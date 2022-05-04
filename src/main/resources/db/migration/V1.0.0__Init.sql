@@ -1,11 +1,11 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-SET search_path TO pointr,public;
+SET search_path TO data,public;
 
-CREATE SCHEMA IF NOT EXISTS pointr;
+CREATE SCHEMA IF NOT EXISTS data;
 
 
-CREATE TABLE IF NOT EXISTS pointr.business(
+CREATE TABLE IF NOT EXISTS data.business(
     id            uuid primary key,
     name          varchar(20)  not null,
     description   text         not null,
@@ -14,10 +14,10 @@ CREATE TABLE IF NOT EXISTS pointr.business(
     update_time   timestamp,
 );
 
-CREATE TABLE IF NOT EXISTS pointr.product(
+CREATE TABLE IF NOT EXISTS data.product(
     id            uuid primary key,
     name          varchar(20)  not null,
-    business_id   uuid         not null references pointr.business,
+    business_id   uuid         not null references data.business,
     creation_time timestamp    not null,
     update_time   timestamp,
 )
