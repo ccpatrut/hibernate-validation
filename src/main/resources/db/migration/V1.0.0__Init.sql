@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS data.business(
     description   text         not null,
     cta           varchar(100) not null,
     creation_time timestamp    not null,
-    update_time   timestamp,
+    update_time   timestamp
 );
 
 CREATE TABLE IF NOT EXISTS data.product(
@@ -19,5 +19,5 @@ CREATE TABLE IF NOT EXISTS data.product(
     name          varchar(20)  not null,
     business_id   uuid         not null references data.business,
     creation_time timestamp    not null,
-    update_time   timestamp,
+    update_time   timestamp
 )

@@ -22,6 +22,5 @@ public interface BusinessApi {
     String PATH = "businesses";
 
     @POST
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
     Uni<Response> save(@NotNull @Valid @RequestBody BusinessTO businessSave);
 }

@@ -25,10 +25,16 @@ public class BusinessRepositoryImpl implements BusinessRepository {
 
     @Override
     public Uni<UUID> save(final BusinessTO business) {
-        return pgPool.withTransaction(con -> con.preparedQuery(INSERT_INTO + BusinessRepository.TABLE +
-                        " (id, name, description, cta, creation_time) VALUES ($1, $2, $3, $4,  $5, $6, $7, $8) RETURNING id")
+        return pgPool.withTransaction(con -> con.preparedQuery(INSERT_INTO +
+                        BusinessRepository.TABLE +
+                        " (id, name, description, cta, creation_time) VALUES (" +
+                        "$1, $2, $3, $4,  $5) RETURNING id")
                 .execute(Tuple.tuple(
-                        Lists.newArrayList(UUID.randomUUID(), business.getName(), business.getDescription(), business.getCta(), LocalDateTime.now())
+                        Lists.newArrayList(UUID.randomUUID(),
+                                business.getName(),
+                                business.getDescription(),
+                                business.getCta(),
+                                LocalDateTime.now())
                 ))
                 .onItem().transform(row -> getId(row.iterator())));
     }

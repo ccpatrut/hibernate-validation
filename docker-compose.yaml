@@ -10,7 +10,7 @@ services:
     volumes:
       - pointrq13:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: database
-      POSTGRES_PASSWORD: database
+      POSTGRES_USER: data
+      POSTGRES_PASSWORD: data
     ports:
       - 5432:5432

@@ -5,8 +5,10 @@ import com.cpatrut.repository.ProductRepository;
 import com.cpatrut.service.ProductService;
 import io.smallrye.mutiny.Uni;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.util.UUID;
 
+@ApplicationScoped
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
@@ -16,8 +18,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Uni<UUID> save(final ProductTO service) {
-        //more  business logic
         return productRepository.save(service);
     }
-
 }

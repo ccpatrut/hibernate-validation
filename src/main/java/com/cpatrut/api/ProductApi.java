@@ -1,6 +1,7 @@
 package com.cpatrut.api;
 
 import com.cpatrut.dto.ProductTO;
+import io.smallrye.common.annotation.Blocking;
 import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
@@ -19,9 +20,9 @@ import javax.ws.rs.core.Response;
 @Consumes(MediaType.APPLICATION_JSON)
 @Tag(name = "Business", description = "Business Services API")
 public interface ProductApi {
-    String PATH = BusinessApi.PATH + "/services";
+    String PATH = BusinessApi.PATH + "/products";
 
     @POST
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Blocking
     Uni<Response> save(@NotNull @Valid @RequestBody ProductTO service);
 }
