@@ -1,6 +1,6 @@
 package com.cpatrut.api;
 
-import com.cpatrut.dto.ServiceTO;
+import com.cpatrut.dto.ProductTO;
 import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
@@ -23,5 +23,5 @@ public interface ProductApi {
 
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    Uni<Response> save(@NotNull @Valid @RequestBody ServiceTO service);
+    Uni<Response> save(@NotNull @Valid @RequestBody ProductTO service);
 }

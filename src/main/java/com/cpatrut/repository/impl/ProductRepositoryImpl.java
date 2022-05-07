@@ -1,6 +1,6 @@
 package com.cpatrut.repository.impl;
 
-import com.cpatrut.dto.ServiceTO;
+import com.cpatrut.dto.ProductTO;
 import com.cpatrut.repository.BusinessRepository;
 import com.cpatrut.repository.DbUtil;
 import com.cpatrut.repository.ProductRepository;
@@ -24,7 +24,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public Uni<UUID> save(final ServiceTO business) {
+    public Uni<UUID> save(final ProductTO business) {
         return pgPool.withTransaction(con -> con.preparedQuery(INSERT_INTO + BusinessRepository.TABLE +
                         " (id, name, description, cta, creation_time) VALUES ($1, $2, $3, $4,  $5, $6, $7, $8) RETURNING id")
                 .execute(Tuple.tuple(
