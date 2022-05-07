@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "e67c1db3-c590-44ee-8f7f-39ff42ad2518",
+		"name": "validation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/businesses/products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"first-name\",\n    \"businessId\":\"d98885c1-5bfd-4fc6-bdcb-a904ba3fe0b9\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/businesses/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"businesses",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/businesses/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"nice name\",\n    \"description\":\"what a nice description\",\n    \"cta\": \"come b!\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/businesses/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"businesses",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

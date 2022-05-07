@@ -1,0 +1,16 @@
+version: '3.6'
+
+volumes:
+  pointrq13: { }
+
+services:
+  postgres:
+    image: postgres:13.5-alpine3.15
+    container_name: pg
+    volumes:
+      - pointrq13:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: data
+      POSTGRES_PASSWORD: data
+    ports:
+      - 5432:5432
