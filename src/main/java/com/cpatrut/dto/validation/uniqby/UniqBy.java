@@ -24,6 +24,4 @@ public @interface UniqBy {
     Class<? extends UniquenessValidationExecutor> strategyToValidate();
 
     String[] fields();
-
-
 }
