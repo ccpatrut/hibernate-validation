@@ -1,14 +1,14 @@
 package com.cpatrut.api.impl;
 
-import com.cpatrut.api.ServiceApi;
+import com.cpatrut.api.ProductApi;
 import com.cpatrut.dto.ServiceTO;
 import io.smallrye.mutiny.Uni;
 
 import javax.ws.rs.core.Response;
 
-public class ServiceApiImpl implements ServiceApi {
+public class ProductApiImpl implements ProductApi {
     @Override
-    public Uni<Response> save(ServiceTO service) {
+    public Uni<Response> save(final ServiceTO service) {
         return null;
     }
 }

@@ -2,22 +2,24 @@ package com.cpatrut.repository.impl;
 
 import com.cpatrut.dto.ServiceTO;
 import com.cpatrut.repository.BusinessRepository;
-import com.cpatrut.repository.ServiceRepository;
+import com.cpatrut.repository.DbUtil;
+import com.cpatrut.repository.ProductRepository;
 import com.google.common.collect.Lists;
 import io.smallrye.mutiny.Uni;
 import io.vertx.mutiny.pgclient.PgPool;
 import io.vertx.mutiny.sqlclient.Tuple;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.UUID;
 
-import static com.cpatrut.repository.DbUtil.INSERT_INTO;
-import static com.cpatrut.repository.DbUtil.getId;
+import static com.cpatrut.repository.DbUtil.*;
+import static java.util.List.copyOf;
 
-public class ServiceRepositoryImpl implements ServiceRepository {
+public class ProductRepositoryImpl implements ProductRepository {
     private final PgPool pgPool;
 
-    ServiceRepositoryImpl(final PgPool pgPool) {
+    ProductRepositoryImpl(final PgPool pgPool) {
         this.pgPool = pgPool;
     }
 
@@ -32,8 +34,13 @@ public class ServiceRepositoryImpl implements ServiceRepository {
     }
 
     @Override
-    public Uni<Boolean> isUniqueNameForBusinessId(final UUID businessId, final String name) {
-        return null;
+    public Uni<Boolean> isUniqueNameForBusinessId(final Map<String, String> fieldToValueMap) {
+        final String whereClause = generateWhere(fieldToValueMap);
+        return pgPool.withTransaction(
+                sqlConnection -> sqlConnection.preparedQuery("SELECT true as result from " + ProductRepository.TABLE
+                                + " where " + whereClause + " LIMIT 1; ")
+                        .execute(Tuple.tuple(copyOf(fieldToValueMap.keySet())))
+                        .onItem().transform(result -> !DbUtil.getBoolean(result)));
     }
 
 

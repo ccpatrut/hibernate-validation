@@ -14,11 +14,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path(ServiceApi.PATH)
+@Path(ProductApi.PATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Tag(name = "Business", description = "Business Services API")
-public interface ServiceApi {
+public interface ProductApi {
     String PATH = BusinessApi.PATH + "/services";
 
     @POST
